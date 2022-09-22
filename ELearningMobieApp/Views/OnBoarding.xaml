@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ELearningMobieApp.Views.OnBoarding"
+             xmlns:vm="clr-namespace:ELearningMobieApp.ViewModels"
+             xmlns:model="clr-namespace:ELearningMobieApp.Models"
+             xmlns:templates="clr-namespace:ELearningMobieApp.Views.Template"
+             Title="OnBoarding"
+             x:DataType="vm:OnBoardingViewModel"
+             >
+    <Grid RowDefinitions="*,Auto">
+        
+        <CarouselView
+            CurrentItemChangedCommand="{Binding CarouselItemChangeCommand}"
+            CurrentItemChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=CurrentItem}"
+            CurrentItemChanged="CarouselView_CurrentItemChanged"
+            IndicatorView="indicatorView"
+            VerticalOptions="Start"
+            Margin="0,10"
+            ItemsSource="{Binding OnBoardingItems}">
+            <CarouselView.ItemTemplate>
+                <DataTemplate x:DataType="model:OnBoardingItem">
+                    <templates:OnBoardingItemTemplate/>
+                </DataTemplate>
+
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+        <IndicatorView x:Name="indicatorView" HorizontalOptions="CenterAndExpand" SelectedIndicatorColor="Transparent" IndicatorColor="Transparent" VerticalOptions="End" Margin="0,0,0,100">
+            <IndicatorView.IndicatorTemplate>
+                <DataTemplate>
+                    <BoxView Margin="0,0,7,0" Style="{StaticResource OnBaordingIndicator}"/>
+                </DataTemplate>
+
+            </IndicatorView.IndicatorTemplate>
+
+
+        </IndicatorView>
+        <Button Style="{StaticResource CarouselButton}" Command="{Binding GotoMainPageCommand}" Text="Skip"/>
+        <Button Text="{Binding CurrentButtonText}" Style="{StaticResource OnBoardingBtn}" Grid.Row="1"/>
+    </Grid>
+</ContentPage>

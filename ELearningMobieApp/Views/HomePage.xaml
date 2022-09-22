@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="ELearningMobieApp.Views.HomePage"
+    xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+    xmlns:mct ="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:helpers="clr-namespace:ELearningMobieApp.Helpers"
+    ios:Page.UseSafeArea="True"
+    Title="HomePage">
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView >
+            <VerticalStackLayout Spacing="10" Padding="20,10">
+                <Grid Margin="0,5,0,15">
+                    <ImageButton   HorizontalOptions="Start" RotationX="180" Source="menuleft"/>
+                    <Frame  Padding="0" BorderColor="Transparent" HasShadow="False" IsClippedToBounds="True" CornerRadius="{OnPlatform iOS=15, Android=15,Default=15}" HeightRequest="50" WidthRequest="50" HorizontalOptions="End">
+                        <Image  Aspect="AspectFit"  Source="https://i.pravatar.cc/300"/>
+                    </Frame>
+                </Grid>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span LineHeight="1.5" FontSize="30" TextColor="{StaticResource ThemeGray}" FontFamily="GilroyMedium" Text="Hello,"/>
+                            <Span Text="&#10;"/>
+                            <Span LineHeight="1.2" FontSize="30" FontFamily="GilroyBold" Text="Robert Nicklas"/>
+                        </FormattedString>
+
+                    </Label.FormattedText>
+                </Label>
+
+                <Grid Margin="0,10,0,0" ColumnSpacing="10" ColumnDefinitions="*,Auto">
+                    <Border StrokeThickness="2" HeightRequest="50" Padding="10,5" StrokeShape="RoundRectangle 15,0">
+                        <Grid ColumnSpacing="10" ColumnDefinitions="Auto,*">
+                            <Label TextColor="{StaticResource ThemeGray}" FontSize="25" VerticalOptions="Center" FontFamily="ICO" Text="{x:Static helpers:SearchIcon.Search}"/>
+                            <Entry FontFamily="GilroyMedium" FontSize="17" PlaceholderColor="{StaticResource ThemeGray}" Placeholder="Search your course" Grid.Column="1"/>
+                        </Grid>
+
+                    </Border>
+                    <Button
+                        HeightRequest="45"
+                        WidthRequest="45"
+                        Grid.Column="1"
+                        FontSize="20"
+                        FontFamily="MDI"
+                        Text="{x:Static helpers:ChatIconM.TuneVertical}"/>
+                </Grid>
+            </VerticalStackLayout>
+
+        </ScrollView>
+        <!-- Nav Section -->
+        <Border
+            VerticalOptions="End"
+            StrokeThickness="0"
+            HeightRequest="60"
+            StrokeShape="RoundRectangle 40,0"
+            BackgroundColor="{StaticResource White}"
+            Grid.Row="1">
+            <Border.Shadow>
+                <Shadow Brush="#000" Opacity="0.1" Radius="1" Offset="0,-1"/>
+            </Border.Shadow>
+
+            <Grid ColumnDefinitions="*,*,*,*,*">
+                <Button
+                    FontFamily="MaterialRound"
+                    Text="{x:Static helpers:MaterialIconRounded.Home}"
+                    BackgroundColor="Transparent"
+                    Padding="0"
+                    FontSize="30"
+                    TextColor="{StaticResource Primary}"/>
+                    
+
+                
+                <Button
+                    Grid.Column="1"
+                    FontFamily="ICO"
+                    Text="{x:Static helpers:SearchIcon.Search}"
+                    BackgroundColor="Transparent"
+                    Padding="0"
+                    FontSize="25"
+                    TextColor="Black"/>
+                <Button Grid.Column="2"
+                    FontFamily="MaterialRound"
+                    Text="{x:Static helpers:MaterialIconRounded.Play_arrow}"
+                    BackgroundColor="Transparent"
+                    Padding="0"
+                    FontSize="35"
+                    TextColor="Black" />
+                <Button Grid.Column="3"
+                    FontFamily="MDI"
+                    Text="{x:Static helpers:ChatIconM.ChatProcessing}"
+                    BackgroundColor="Transparent"
+                    Padding="0"
+                    FontSize="28"
+                    TextColor="Black"/>
+                <Button Grid.Column="4"
+                        FontFamily="MaterialRound"
+                    Text="{x:Static helpers:MaterialIconRounded.Person}"
+                    BackgroundColor="Transparent"
+                    Padding="0"
+                    FontSize="30"
+                    TextColor="Black"/>
+            </Grid>
+        </Border>
+    </Grid>
+</ContentPage>
